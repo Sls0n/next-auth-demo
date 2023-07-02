@@ -1,7 +1,7 @@
-export default function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center h-screen py-2">
-      <h1 className="text-4xl font-bold text-gray-800">Hello World</h1>
-    </div>
-  )
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "@/utils/authOptions"
+
+export default async function Page() {
+  const session = await getServerSession(authOptions)
+  return <pre>{JSON.stringify(session)}</pre>
 }

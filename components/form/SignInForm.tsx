@@ -41,7 +41,7 @@ export default function Form() {
             <p className="mt-8 text-sm text-center text-gray-600">
               Dont have an account?{" "}
               <a
-                href="/signin"
+                href="/signup"
                 className="font-medium text-indigo-600 hover:text-indigo-500 hover:underline"
               >
                 Sign up
