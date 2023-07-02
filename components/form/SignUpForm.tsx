@@ -1,9 +1,18 @@
 "use client"
 
+import axios from "axios"
+import { useState } from "react"
+
 import Input from "./Input/Input"
 import Button from "./Input/Button"
 
 export default function Form() {
+  const [data, setData] = useState({ username: "", email: "", password: "" })
+
+  const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  }
+
   return (
     <div className="flex justify-center items-center mt-20 bg-gray-50">
       <div className="w-full max-w-md p-6 space-y-10 bg-white rounded-md shadow-lg">
@@ -12,7 +21,7 @@ export default function Form() {
             Register
           </h1>
         </div>
-        <form className="space-y-10">
+        <form onSubmit={registerUser} className="space-y-10">
           <div>
             <label
               htmlFor="username"
@@ -21,7 +30,14 @@ export default function Form() {
               Username
             </label>
             <div className="mt-2">
-              <Input id="username" name="username" type="text" required />
+              <Input
+                value={data.username}
+                onChange={(e) => setData({ ...data, username: e.target.value })}
+                id="username"
+                name="username"
+                type="text"
+                required
+              />
             </div>
           </div>
           <div>
@@ -32,7 +48,14 @@ export default function Form() {
               Email address
             </label>
             <div className="mt-2">
-              <Input id="email" name="email" type="email" required />
+              <Input
+                value={data.email}
+                onChange={(e) => setData({ ...data, email: e.target.value })}
+                id="email"
+                name="email"
+                type="email"
+                required
+              />
             </div>
           </div>
           <div>
@@ -43,7 +66,14 @@ export default function Form() {
               Password
             </label>
             <div className="mt-2">
-              <Input id="password" name="password" type="password" required />
+              <Input
+                value={data.password}
+                onChange={(e) => setData({ ...data, password: e.target.value })}
+                id="password"
+                name="password"
+                type="password"
+                required
+              />
             </div>
           </div>
           <div>
