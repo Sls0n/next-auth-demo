@@ -10,14 +10,15 @@ export default function NavBar() {
         Auth
       </a>
 
-      <button
-        onClick={() => {
-          router.push("/signin")
-        }}
-        className="px-4 py-2 font-medium text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
-      >
-        Sign in
-      </button>
+      <div className="flex gap-8 items-center">
+        <a href="/signin">Sign in</a>
+        <a
+          href="/signup"
+          className="px-4 py-2 font-medium text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors cursor-pointer"
+        >
+          Register
+        </a>
+      </div>
     </nav>
   )
 }
