@@ -8,6 +8,10 @@ import Button from "./Input/Button"
 export default function Form() {
   const [data, setData] = useState({ email: "", password: "" })
 
+  const loginUser = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  }
+
   return (
     <div className="flex justify-center items-center mt-20 bg-gray-50">
       <div className="w-full max-w-md p-6 space-y-10 bg-white rounded-md shadow-lg">
@@ -16,7 +20,7 @@ export default function Form() {
             Sign in
           </h1>
         </div>
-        <form className="space-y-8">
+        <form onSubmit={loginUser} className="space-y-8">
           <div>
             <label
               htmlFor="email"
