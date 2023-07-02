@@ -11,6 +11,16 @@ export default function Form() {
 
   const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    axios
+      .post("/api/register", data)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+        alert(err)
+      })
   }
 
   return (
@@ -77,7 +87,7 @@ export default function Form() {
             </div>
           </div>
           <div>
-            <Button onClick={() => {}}>Sign in</Button>
+            <Button onClick={() => {}}>Register</Button>
 
             <p className="mt-8 text-sm text-center text-gray-600">
               Already have an account?{" "}
