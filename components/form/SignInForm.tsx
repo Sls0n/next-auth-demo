@@ -5,11 +5,25 @@ import { useState } from "react"
 import Input from "./Input/Input"
 import Button from "./Input/Button"
 
+import { signIn } from "next-auth/react"
+
 export default function Form() {
   const [data, setData] = useState({ email: "", password: "" })
 
   const loginUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    })
+      .then(() => {
+        alert("Signed in!")
+      })
+      .catch(() => {
+        alert("Sign in failed!")
+      })
   }
 
   return (
