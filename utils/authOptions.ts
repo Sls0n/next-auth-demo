@@ -7,6 +7,9 @@ import prisma from "@/libs/prismadb"
 import bcrypt from "bcrypt"
 
 export const authOptions: NextAuthOptions = {
+  pages: {
+    signIn: "/signin",
+  },
   adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({
