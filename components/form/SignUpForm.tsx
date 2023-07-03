@@ -25,7 +25,7 @@ export default function Form() {
   }
 
   return (
-    <div className="flex justify-center items-center mt-20 bg-gray-50">
+    <div className="flex justify-center items-center mt-10 bg-gray-50">
       <div className="w-full max-w-md p-6 space-y-10 bg-white rounded-md shadow-lg">
         <div>
           <h1 className="text-4xl text-center font-bold text-gray-800">

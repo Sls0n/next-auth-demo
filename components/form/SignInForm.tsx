@@ -1,15 +1,27 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 
 import Input from "./Input/Input"
 import Button from "./Input/Button"
 
-import { signIn } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 import { toast } from "react-hot-toast"
 
 export default function Form() {
   const [data, setData] = useState({ email: "", password: "" })
+
+  const router = useRouter()
+
+  const { data: session, status } = useSession()
+
+  useEffect(() => {
+    console.log(session)
+    if (status === "authenticated") {
+      router.push("/")
+    }
+  }, [session])
 
   const loginUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -30,7 +42,7 @@ export default function Form() {
   }
 
   return (
-    <div className="flex justify-center items-center mt-20 bg-gray-50">
+    <div className="flex justify-center items-center mt-10 bg-gray-50">
       <div className="w-full max-w-md p-6 space-y-10 bg-white rounded-md shadow-lg">
         <div>
           <h1 className="text-4xl text-center font-bold text-gray-800">
@@ -86,6 +98,42 @@ export default function Form() {
                 Sign up
               </a>
             </p>
+          </div>
+          <hr />
+          <div className="flex flex-col gap-6 justify-center">
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                signIn("github")
+              }}
+              className="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-md hover:bg-gray-300"
+            >
+              {" "}
+              Continue with Github
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="w-5 h-5 ml-2"
+                src="https://img.icons8.com/fluency/48/000000/github.png"
+                alt="github"
+              />
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                signIn("google")
+              }}
+              className="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-md hover:bg-gray-300"
+            >
+              {" "}
+              Continue with Google
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="w-5 h-5 ml-2"
+                src="https://img.icons8.com/color/48/000000/google-logo.png"
+                alt="github"
+              />
+            </button>
           </div>
         </form>
       </div>
