@@ -1,8 +1,7 @@
-# nextauth-demo
-
-- Authentication using next-auth library
+# Authentication using Next, NextAuth, Prisma, MongoDB, Bcrypt, and TailwindCSS
 
 ## Getting Started
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:

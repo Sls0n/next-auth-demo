@@ -6,6 +6,7 @@ import Input from "./Input/Input"
 import Button from "./Input/Button"
 
 import { signIn } from "next-auth/react"
+import { toast } from "react-hot-toast"
 
 export default function Form() {
   const [data, setData] = useState({ email: "", password: "" })
@@ -17,13 +18,15 @@ export default function Form() {
       email: data.email,
       password: data.password,
       redirect: false,
+    }).then((callback) => {
+      if (callback?.error) {
+        toast.error(callback.error)
+      }
+
+      if (callback?.ok && !callback?.error) {
+        toast.success("Login successful!")
+      }
     })
-      .then(() => {
-        alert("Signed in!")
-      })
-      .catch(() => {
-        alert("Sign in failed!")
-      })
   }
 
   return (

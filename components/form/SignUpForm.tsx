@@ -5,6 +5,7 @@ import { useState } from "react"
 
 import Input from "./Input/Input"
 import Button from "./Input/Button"
+import { toast } from "react-hot-toast"
 
 export default function Form() {
   const [data, setData] = useState({ username: "", email: "", password: "" })
@@ -14,12 +15,12 @@ export default function Form() {
 
     axios
       .post("/api/register", data)
-      .then((res) => {
-        console.log(res)
+      .then(() => {
+        toast.success("User has been registered!")
       })
       .catch((err) => {
         console.log(err)
-        alert(err)
+        toast.error("User registration failed!")
       })
   }
 
